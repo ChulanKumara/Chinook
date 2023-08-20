@@ -12205,11 +12205,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\c.kumara\\Downloads\\Chinook\\Chinook\\Chinook.csproj",
+      "projectUniqueName": "D:\\Sample VS Projects\\BlazorApp\\Assignment\\Chinook\\Chinook.csproj",
       "projectName": "Chinook",
-      "projectPath": "C:\\Users\\c.kumara\\Downloads\\Chinook\\Chinook\\Chinook.csproj",
+      "projectPath": "D:\\Sample VS Projects\\BlazorApp\\Assignment\\Chinook\\Chinook.csproj",
       "packagesPath": "C:\\Users\\c.kumara\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\c.kumara\\Downloads\\Chinook\\Chinook\\obj\\",
+      "outputPath": "D:\\Sample VS Projects\\BlazorApp\\Assignment\\Chinook\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
