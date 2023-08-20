@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Chinook.Models
+﻿namespace Chinook.Models
 {
     public partial class Track
     {
         public Track()
         {
             InvoiceLines = new HashSet<InvoiceLine>();
-            Playlists = new HashSet<Playlist>();
+            Playlists = new HashSet<PlaylistData>();
         }
 
         public long TrackId { get; set; }
@@ -26,6 +23,6 @@ namespace Chinook.Models
         public virtual MediaType MediaType { get; set; } = null!;
         public virtual ICollection<InvoiceLine> InvoiceLines { get; set; }
 
-        public virtual ICollection<Playlist> Playlists { get; set; }
+        public virtual ICollection<PlaylistData> Playlists { get; set; }
     }
 }
