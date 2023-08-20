@@ -1,5 +1,8 @@
-﻿namespace Chinook.ClientModels
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Chinook.ClientModels
 {
+    [Keyless]
     public class ArtistModel
     {
         public long ArtistId { get; set; }
