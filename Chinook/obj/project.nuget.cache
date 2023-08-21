@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/dS+Knw3rpviU1iQe4povEJD9/sBvO34vzj4uy1fHN/cdtNtXERJoFCyO4qIDjtidZU/J+AB3S+faBd0atVXVA==",
+  "dgSpecHash": "ThwFY5nLlM5UgJI2p37o4LeieP+l6kmtbfl+bQrH/p7rZZbVwFLxJSEks/d5hc21RwnElu4SFtVY/LlcMHapaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\c.kumara\\Downloads\\Chinook\\Chinook\\Chinook.csproj",
+  "projectFilePath": "D:\\Sample VS Projects\\BlazorApp\\Assignment\\Chinook\\Chinook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\c.kumara\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\c.kumara\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

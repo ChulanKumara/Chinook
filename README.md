@@ -14,3 +14,13 @@ When creating a user account, you will see this:
 After you click 'Click here to confirm your account' you should be able to login.
 
 Please put the code in Github. Please put the original code (our code) in the master branch, put your code in a separate branch, and make a pull request to the master branch.
+
+
+Special Notes:
+
+1. Completed the above mentioned tasks as per my best.
+2. Handled errors as much as possible.
+3. Used Blazor instead of using JQuery & JavaScript.
+4. Used Dependency Injection to register services at Program.cs file using scoped method.
+5. Clean code, Good naming convention, Proper structuring of the application standards were followed to the my best of my knowledge.
+6. Original code is in main branch and the changes were comitted to development branch whilst working on the functionality. Merged to main branch through a pull request.

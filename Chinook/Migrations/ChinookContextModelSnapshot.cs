@@ -15,7 +15,22 @@ namespace Chinook.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
+
+            modelBuilder.Entity("Chinook.ClientModels.AlbumModel", b =>
+                {
+                    b.Property<long>("AlbumId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("ArtistId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.ToTable("Albums");
+                });
 
             modelBuilder.Entity("Chinook.Models.Album", b =>
                 {
@@ -311,7 +326,7 @@ namespace Chinook.Migrations
                     b.ToTable("MediaType", (string)null);
                 });
 
-            modelBuilder.Entity("Chinook.Models.Playlist", b =>
+            modelBuilder.Entity("Chinook.Models.PlaylistData", b =>
                 {
                     b.Property<long>("PlaylistId")
                         .HasColumnType("INTEGER");
@@ -607,7 +622,7 @@ namespace Chinook.Migrations
 
             modelBuilder.Entity("Chinook.Models.UserPlaylist", b =>
                 {
-                    b.HasOne("Chinook.Models.Playlist", "Playlist")
+                    b.HasOne("Chinook.Models.PlaylistData", "Playlist")
                         .WithMany("UserPlaylists")
                         .HasForeignKey("PlaylistId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -677,7 +692,7 @@ namespace Chinook.Migrations
 
             modelBuilder.Entity("PlaylistTrack", b =>
                 {
-                    b.HasOne("Chinook.Models.Playlist", null)
+                    b.HasOne("Chinook.Models.PlaylistData", null)
                         .WithMany()
                         .HasForeignKey("PlaylistId")
                         .IsRequired();
@@ -730,7 +745,7 @@ namespace Chinook.Migrations
                     b.Navigation("Tracks");
                 });
 
-            modelBuilder.Entity("Chinook.Models.Playlist", b =>
+            modelBuilder.Entity("Chinook.Models.PlaylistData", b =>
                 {
                     b.Navigation("UserPlaylists");
                 });

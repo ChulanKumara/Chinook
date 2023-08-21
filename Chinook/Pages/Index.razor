@@ -1,10 +1,14 @@
 ﻿@page "/"
 @attribute [Authorize]
 
+@using Chinook.ClientModels;
+@using Chinook.Controller;
 @using Chinook.Models
 @using Microsoft.EntityFrameworkCore
 
 <PageTitle>Index</PageTitle>
+
+<input class="form-control" id="artistSerachBar" placeholder="Search Artist by name" @oninput="SearchArtistsByName" />
 
 <h1>Artists</h1>
 
@@ -34,25 +38,31 @@ else
 }
 
 @code {
-    private List<Artist> Artists;
-    [Inject] IDbContextFactory<ChinookContext> DbFactory { get; set; }
+    private List<ArtistModel> Artists;
+    @inject ArtistsController artistController;
 
-    protected override async Task OnInitializedAsync() {
+    protected override async Task OnInitializedAsync()
+    {
         await InvokeAsync(StateHasChanged);
         Artists = await GetArtists();
     }
 
-    public async Task<List<Artist>> GetArtists()
-    {   
-        var dbContext = await DbFactory.CreateDbContextAsync();
-        var users = dbContext.Users.Include(a => a.UserPlaylists).ToList();
-        
-        return dbContext.Artists.ToList();
+    public async Task<List<ArtistModel>> GetArtists()
+    {
+        return await artistController.GetArtists();
     }
 
-    public async Task<List<Album>> GetAlbumsForArtist(int artistId)
+    public async Task<List<AlbumModel>> GetAlbumsForArtist(int artistId)
     {
-        var dbContext = await DbFactory.CreateDbContextAsync();
-        return dbContext.Albums.Where(a => a.ArtistId == artistId).ToList();
+        return await artistController.GetAlbumsForArtist(artistId);
+    }
+
+    /// <summary>
+    /// Search for Artist
+    /// </summary>
+    /// <returns></returns>
+    public async void SearchArtistsByName(ChangeEventArgs e)
+    {
+        Artists = await artistController.GetArtists(e.Value.ToString());
     }
 }

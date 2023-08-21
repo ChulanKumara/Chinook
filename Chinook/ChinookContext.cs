@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Chinook.Models;
+﻿using Chinook.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chinook;
 
@@ -18,17 +15,18 @@ public partial class ChinookContext : IdentityDbContext<ChinookUser>
     {
     }
 
-    public virtual DbSet<Album> Albums { get; set; } = null!;
-    public virtual DbSet<Artist> Artists { get; set; } = null!;
+    public virtual DbSet<ClientModels.AlbumModel> Albums { get; set; } = null!;
+    public virtual DbSet<Models.Artist> Artists { get; set; } = null!;
     public virtual DbSet<Customer> Customers { get; set; } = null!;
     public virtual DbSet<Employee> Employees { get; set; } = null!;
     public virtual DbSet<Genre> Genres { get; set; } = null!;
     public virtual DbSet<Invoice> Invoices { get; set; } = null!;
     public virtual DbSet<InvoiceLine> InvoiceLines { get; set; } = null!;
     public virtual DbSet<MediaType> MediaTypes { get; set; } = null!;
-    public virtual DbSet<Playlist> Playlists { get; set; } = null!;
+    public virtual DbSet<PlaylistData> Playlists { get; set; } = null!;
     public virtual DbSet<Track> Tracks { get; set; } = null!;
     public virtual DbSet<UserPlaylist> UserPlaylists { get; set; } = null!;
+    public virtual DbSet<UserPlaylist> Save { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -46,7 +44,7 @@ public partial class ChinookContext : IdentityDbContext<ChinookUser>
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Album>(entity =>
+        modelBuilder.Entity<Models.Album>(entity =>
         {
             entity.ToTable("Album");
 
@@ -62,7 +60,7 @@ public partial class ChinookContext : IdentityDbContext<ChinookUser>
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        modelBuilder.Entity<Artist>(entity =>
+        modelBuilder.Entity<Models.Artist>(entity =>
         {
             entity.ToTable("Artist");
 
@@ -214,7 +212,7 @@ public partial class ChinookContext : IdentityDbContext<ChinookUser>
             entity.Property(e => e.Name).HasColumnType("NVARCHAR(120)");
         });
 
-        modelBuilder.Entity<Playlist>(entity =>
+        modelBuilder.Entity<PlaylistData>(entity =>
         {
             entity.ToTable("Playlist");
 
@@ -227,7 +225,7 @@ public partial class ChinookContext : IdentityDbContext<ChinookUser>
                 .UsingEntity<Dictionary<string, object>>(
                     "PlaylistTrack",
                     l => l.HasOne<Track>().WithMany().HasForeignKey("TrackId").OnDelete(DeleteBehavior.ClientSetNull),
-                    r => r.HasOne<Playlist>().WithMany().HasForeignKey("PlaylistId").OnDelete(DeleteBehavior.ClientSetNull),
+                    r => r.HasOne<PlaylistData>().WithMany().HasForeignKey("PlaylistId").OnDelete(DeleteBehavior.ClientSetNull),
                     j =>
                     {
                         j.HasKey("PlaylistId", "TrackId");
