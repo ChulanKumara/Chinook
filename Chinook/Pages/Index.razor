@@ -38,7 +38,7 @@ else
 }
 
 @code {
-    private List<ClientModels.ArtistModel> Artists;
+    private List<ArtistModel> Artists;
     @inject ArtistsController artistController;
 
     protected override async Task OnInitializedAsync()
@@ -47,12 +47,12 @@ else
         Artists = await GetArtists();
     }
 
-    public async Task<List<ClientModels.ArtistModel>> GetArtists()
+    public async Task<List<ArtistModel>> GetArtists()
     {
         return await artistController.GetArtists();
     }
 
-    public async Task<List<ClientModels.AlbumModel>> GetAlbumsForArtist(int artistId)
+    public async Task<List<AlbumModel>> GetAlbumsForArtist(int artistId)
     {
         return await artistController.GetAlbumsForArtist(artistId);
     }

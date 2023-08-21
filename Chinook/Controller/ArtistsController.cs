@@ -35,7 +35,7 @@ namespace Chinook.Controller
                 {
                     ArtistId = x.ArtistId,
                     Name = x.Name,
-                    Albums = (ICollection<AlbumModel>)x.Albums,
+                    Albums = x.Albums,
                 }).ToList();
 
                 return artistModel;
